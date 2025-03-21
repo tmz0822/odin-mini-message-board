@@ -1,21 +1,6 @@
 require('dotenv').config();
 const { Client } = require('pg');
 
-// const messages = [
-//   {
-//     id: 1,
-//     text: 'Hi there!',
-//     user: 'Amando',
-//     added: new Date(),
-//   },
-//   {
-//     id: 2,
-//     text: 'Hello World!',
-//     user: 'Charles',
-//     added: new Date(),
-//   },
-// ];
-
 const SQL = `
 DROP TABLE messages;
 
@@ -35,7 +20,8 @@ VALUES
 async function main() {
   console.log('seeding...');
   const client = new Client({
-    connectionString: process.env.DATABASE_CONNECTION_STRING,
+    connectionString:
+      process.env.DATABASE_URL || process.env.DATABASE_CONNECTION_STRING,
   });
   await client.connect();
 
