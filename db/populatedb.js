@@ -2,8 +2,6 @@ require('dotenv').config();
 const { Client } = require('pg');
 
 const SQL = `
-DROP TABLE messages;
-
 CREATE TABLE IF NOT EXISTS messages (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   text VARCHAR(255),
