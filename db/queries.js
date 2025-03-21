@@ -6,9 +6,9 @@ async function getAllMessages() {
 }
 
 async function getMessageById(id) {
-  if (isNaN(id) || !Number.isInteger(id)) {
-    return;
-  }
+  // if (isNaN(id) || !Number.isInteger(id)) {
+  //   return;
+  // }
 
   try {
     const result = await pool.query('SELECT * FROM messages WHERE id = $1', [

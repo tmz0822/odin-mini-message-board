@@ -10,10 +10,13 @@ function renderMessageForm(req, res) {
 }
 
 async function getMessageById(req, res) {
-  const messageId = req.params.id;
-  console.log('params ' + req.params);
-  console.log(messageId);
-  const message = await db.getMessageById(Number(messageId));
+  const messageId = Number(req.params.id);
+
+  if (isNaN(messageId) || !Number.isInteger(messageId)) {
+    return;
+  }
+
+  const message = await db.getMessageById(messageId);
 
   res.render('messages/details', { message: message });
 }
